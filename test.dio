@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="hUaH-o56riBz07JDYcoc" name="ページ1">
-        <mxGraphModel dx="1261" dy="1103" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="249" dy="385" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -84,7 +84,7 @@
                 <mxCell id="54" value="postal_code: 郵便番号" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;labelBorderColor=default;" vertex="1" parent="49">
                     <mxGeometry y="56" width="340" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="prefecture: 都道府県" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;labelBorderColor=default;" vertex="1" parent="49">
+                <mxCell id="52" value="region_id: 都道府県" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;labelBorderColor=default;" vertex="1" parent="49">
                     <mxGeometry y="86" width="340" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="city: 市区町村&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;labelBorderColor=default;" vertex="1" parent="49">
