@@ -4,5 +4,4 @@ class ItemsController < ApplicationController
       # ここにindexアクションのロジックを記述
     end
   end
-  
 end

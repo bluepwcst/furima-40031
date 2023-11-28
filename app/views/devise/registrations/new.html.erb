@@ -1,16 +1,6 @@
 <%= render "shared/second-header"%>
 
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
-<% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -19,7 +9,7 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <% render 'shared/error_messages', model: f.object %>
+  <%=render 'shared/error_messages', model: f.object %>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
   <div class="form-group">
