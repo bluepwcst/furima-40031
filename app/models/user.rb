@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   # パスワードのバリデーション
   # presence: trueはDeviseで処理されるため削除
-  validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
   # 本名のバリデーション
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/ }
