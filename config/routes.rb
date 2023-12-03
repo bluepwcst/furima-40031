@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   # その他のルート...
+  # 商品出品のルート
+  resources :items, only: [:new, :create]
+
 end
