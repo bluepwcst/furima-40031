@@ -43,7 +43,7 @@
 ### Addresses
 - belongs_to :order
 
-### Productsテーブル
+### Itemsテーブル
 | Column            | Type       | Options                      |
 |-------------------|------------|------------------------------|
 | user              | references | null: false, foreign_key: true|
@@ -56,6 +56,6 @@
 | delivery_time_id  | integer    | null: false                  |
 | price             | integer    | null: false                  |
 
-### Products
+### items
 - belongs_to :user
 - has_one :order
