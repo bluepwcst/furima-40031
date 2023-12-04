@@ -25,6 +25,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
 
+            it '価格が空では保存できない' do
+        @item.price = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
+      end
+
+      it '価格が半角数値でないと保存できない' do
+        @item.price = '１０００' # 全角数値
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'userが紐づいていないと保存できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
       # 以下、同様に他の属性についてもテストを記述
       it 'カテゴリーが1では保存できない' do
         @item.category_id = 1
