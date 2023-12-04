@@ -1,23 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # rootパスの設定
   root 'items#index'
-  # ユーザーの新規登録用のルート
+
+  # ユーザー登録、ログイン、ログアウトのルート設定
   get 'signup', to: 'users#new', as: 'signup'
   post 'users', to: 'users#create'
-
-  # ログイン用のルート
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'
-
-  # ログアウト用のルート
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  # その他のルート...
-  # 商品出品のルート
-  resources :items, only: [:new, :create]
+  # Itemsコントローラの標準的なルーティングを一括で追加
+  # indexアクションを含めるために、onlyオプションからindexを削除
+  resources :items
 
+  # その他のルート...
 end
