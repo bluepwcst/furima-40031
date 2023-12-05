@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -10,9 +10,13 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @item = Item.find(params[:id])
-    redirect_to root_path unless current_user.id == @item.user_id
+    @item = Item.find_by(id: params[:id])
+    # アイテムが見つからない、または現在のユーザーがアイテムの所有者でない場合はトップページにリダイレクト
+    if @item.nil? || current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
+
 
 def update
   @item = Item.find(params[:id])
