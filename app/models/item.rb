@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :orders
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -22,6 +23,11 @@ class Item < ApplicationRecord
 
   # 価格の数値範囲を確認するカスタムメソッド
   validate :price_range_valid
+
+  # 商品が売却済みかどうかを確認するメソッド
+  def sold_out?
+    orders.exists?
+  end
 
   private
 
