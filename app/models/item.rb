@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_many :orders
-  
+  has_one :order
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
@@ -26,7 +26,7 @@ class Item < ApplicationRecord
 
   # 商品が売却済みかどうかを確認するメソッド
   def sold_out?
-    orders.exists?
+    order.present?
   end
 
   private

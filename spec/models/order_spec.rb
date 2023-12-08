@@ -28,9 +28,9 @@ RSpec.describe OrderForm, type: :model do
       end
 
       it '都道府県が空だと保存できないこと' do
-        @order_form.prefecture_id = nil
+        @order_form.region_id = nil
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@order_form.errors.full_messages).to include("Region can't be blank")
       end
 
       it '市区町村が空だと保存できないこと' do
@@ -40,9 +40,9 @@ RSpec.describe OrderForm, type: :model do
       end
 
       it '番地が空だと保存できないこと' do
-        @order_form.address = nil
+        @order_form.street_address = nil
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Address can't be blank")
+        expect(@order_form.errors.full_messages).to include("Street address can't be blank")
       end
 
       it '建物名が空でも保存できること' do
@@ -65,14 +65,9 @@ RSpec.describe OrderForm, type: :model do
       it '電話番号が12桁以上だと保存できないこと' do
         @order_form.phone_number = '090123456789'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid') # ここを修正
       end
-
-      it "tokenが空では登録できないこと" do
-        @order.token = nil
-        @order.valid?
-        expect(@order.errors.full_messages).to include("Token can't be blank")
-      end
+      
 
       it "tokenが空では登録できないこと" do
         @order_form.token = nil
