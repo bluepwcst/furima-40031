@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :address do
-    association :order
     postal_code { '123-4567' }
     region_id { 2 } # ここではサンプルとして2を設定していますが、実際のIDに合わせてください
     city { '東京都' }
