@@ -11,8 +11,9 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    # アイテムが見つからない、または現在のユーザーがアイテムの所有者でない場合はトップページにリダイレクト
-    redirect_to root_path if @item.nil? || current_user.id != @item.user_id
+    if @item.sold_out? || current_user.id != @item.user_id
+      redirect_to root_path, alert: 'This item is not available for editing.'
+    end
   end
 
   def update
@@ -45,8 +46,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+    redirect_to root_path, alert: 'Item not found.' if @item.nil?
   end
-
+  
   def check_user
     unless current_user.id == @item.user_id
       redirect_to root_path, alert: 'You are not authorized to perform this action.'
