@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # Itemsコントローラの標準的なルーティングを一括で追加
   # indexアクションを含めるために、onlyオプションからindexを削除
   resources :items do
-    resources :orders, only: [:new, :create]
+    resources :orders, only: [:index, :new, :create]
   end
   # その他のルーティング...
   
