@@ -12,6 +12,10 @@ RSpec.describe OrderForm, type: :model do
       it '全ての値が正しく入力されていれば保存できること' do
         expect(@order_form).to be_valid
       end
+      it '建物名が空でも保存できること' do
+        @order_form.building_name = nil
+        expect(@order_form).to be_valid
+      end
     end
 
     context '購入情報が保存できないとき' do
@@ -28,10 +32,11 @@ RSpec.describe OrderForm, type: :model do
       end
 
       it '都道府県が空だと保存できないこと' do
-        @order_form.region_id = nil
+        @order_form.region_id = 1
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Region can't be blank")
+        expect(@order_form.errors.full_messages).to include("Region must be other than 1")
       end
+      
 
       it '市区町村が空だと保存できないこと' do
         @order_form.city = nil
@@ -45,16 +50,19 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include("Street address can't be blank")
       end
 
-      it '建物名が空でも保存できること' do
-        @order_form.building_name = nil
-        expect(@order_form).to be_valid
-      end
 
       it '電話番号が空だと保存できないこと' do
         @order_form.phone_number = nil
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Phone number can't be blank")
       end
+
+      it '電話番号が9桁以下では保存できないこと' do
+        @order_form.phone_number = '123456789' # 9桁の電話番号
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid')
+      end
+      
 
       it '電話番号が10桁以上11桁以内の半角数値でないと保存できないこと' do
         @order_form.phone_number = '090-1234-5678'
